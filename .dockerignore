@@ -1,0 +1,10 @@
+node_modules
+*/node_modules
+.git
+.env
+*.md
+docs
+android
+mqtt
+.claude
+files.zip
