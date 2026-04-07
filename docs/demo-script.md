@@ -1,137 +1,178 @@
-# KeyPass — Demo Video Script
+# KeyPass — סרטון שיווקי 45 שניות
 
-> Duration: ~3 minutes
-> Required: Computer with dashboards open, Android phone with KeyPass app
-
----
-
-## Scene 1: Introduction (10 seconds)
-
-**Show**: KeyPass logo / landing screen
-
-**Script**: "KeyPass — מערכת בקרת כניסה חכמה מבוססת NFC. הטלפון הוא המפתח."
+> **משך:** 45 שניות בדיוק
+> **שפה:** עברית בלבד (קריינות + טקסטים)
+> **סגנון:** Product launch, מהיר, ויזואלי, ביטחון מלא — לא tutorial
+> **קהל יעד:** ועדי בית, מנהלי בניינים, יזמי נדל״ן, חברות ניהול
 
 ---
 
-## Scene 2: Super Admin Creates Organization (30 seconds)
+## 🎬 לוח זמנים מלא
 
-**Show**: Super Admin Dashboard (localhost:5174)
+### 🪝 HOOK — 0:00–0:05 (5 שניות)
 
-1. Login as super admin (`admin@keypass.co.il`)
-2. Click "ארגון חדש"
-3. Fill in: שם = "בניין המגדלים", כתובת = "רחוב הרצל 15, תל אביב"
-4. Select plan: "רגיל"
-5. Click "צור ארגון"
+| זמן | להראות | קריינות | טקסט על המסך |
+|---|---|---|---|
+| 0:00–0:02 | **קלוז־אפ על שבב פלסטיק** נופל לאיטיות על שולחן. רקע שחור. | — (סאונד נפילה בלבד) | **"2026."** (לבן, ענק, מרכז) |
+| 0:02–0:05 | קאט מהיר: יד מנסה להצמיד שבב לקורא — לא עובד. שוב. שוב. | "עדיין עם שבבים?" | **"עדיין עם שבבים?"** |
 
-**Script**: "מנהל המערכת יוצר ארגון חדש — בניין, משרד, או כל מקום שצריך בקרת כניסה."
-
----
-
-## Scene 3: Super Admin Adds Building Manager (20 seconds)
-
-**Show**: Organization detail page
-
-1. Click on the new organization
-2. Go to "מנהלים" tab
-3. Click "הוסף מנהל"
-4. Fill in: name = "שרה כהן", email = "sarah@example.com", password
-5. Click "הוסף מנהל"
-
-**Script**: "מוסיפים מנהל בניין — הוא יקבל גישה לדשבורד הניהול שלו בלבד."
+**מסך/קומפוננטה:** צילום סטוק/אנלוגי — אין צורך בקוד שלנו עדיין.
 
 ---
 
-## Scene 4: Admin Dashboard — Adding a User (40 seconds)
+### 💢 PAIN — 0:05–0:12 (7 שניות)
 
-**Show**: Admin Dashboard (localhost:5173)
+קאטים מהירים, חצי שנייה כל אחד. כל שוט עם כותרת אדומה ענקית.
 
-1. Login as admin
-2. Show the dashboard: KPI cards, door status
-3. Go to "משתמשים" page
-4. Click "הוסף משתמש"
-5. Fill in: phone = real phone number, name = "אורן כהן", apartment = "12"
-6. All doors are checked by default
-7. "שלח הודעת WhatsApp" is checked
-8. Click "הוסף משתמש"
+| זמן | להראות | טקסט על המסך |
+|---|---|---|
+| 0:05–0:06 | שבב נשבר ביד | **"₪50 לכפילות"** |
+| 0:06–0:07 | יומן ממתין, יד מתופפת | **"שבוע המתנה"** |
+| 0:07–0:08 | זר נכנס לבניין מאחורי דייר | **"כל אחד נכנס"** |
+| 0:08–0:10 | רשימה של דיירים על נייר עם מחיקות בטיפקס | **"שוכר עזב — עדיין עם מפתח"** |
+| 0:10–0:12 | מגירה מלאה בעשרות שבבים, שלט "אבוד?" | **"בלי מי, בלי איפה, בלי מתי"** |
 
-**Script**: "מנהל הבניין מוסיף דייר. מזין טלפון, שם, ודירה. לוחץ שלח — הדייר מקבל הודעת WhatsApp."
+**קריינות (מהירה, רצופה):** "₪50 לכל כפילות. שבוע המתנה. אפס שליטה."
 
----
-
-## Scene 5: User Receives WhatsApp (20 seconds)
-
-**Show**: Phone screen — WhatsApp notification
-
-1. Show the WhatsApp message arriving
-2. Message contains the registration link
-3. User taps the link
-
-**Script**: "הדייר מקבל הודעה ב-WhatsApp עם קישור. לוחץ — ומורידים את האפליקציה."
+**מוזיקה:** טראפ/דאבסטפ עולה. בייס דרופ ב-0:12.
 
 ---
 
-## Scene 6: App Installation & Registration (30 seconds)
+### ⚡ SOLUTION — 0:12–0:25 (13 שניות)
 
-**Show**: Phone screen
+**Beat drop ב-0:12.** מסך הופך ללבן רגע, לוגו KeyPass.
 
-1. Link opens → /open page
-2. APK downloads (or app opens directly if installed)
-3. If first time: install the APK
-4. App opens → spinner → "מאמת..." → "יוצר מפתח אבטחה..." → "✓ המפתח שלך מוכן!"
-5. User taps "התחל להשתמש"
-6. Home screen shows: "שלום, אורן" + door list
+#### 0:12–0:14 — לוגו (2 שניות)
+- **להראות:** Logo Keypass + tagline
+- **טקסט:** **"הטלפון שלך = המפתח"**
+- **קריינות:** "KeyPass."
 
-**Script**: "תוך 30 שניות — האפליקציה מותקנת, מפתח דיגיטלי נוצר, והדלתות מוכנות."
+#### 0:14–0:17 — דשבורד מנהל (3 שניות)
+- **להראות:** [dashboard/src/pages/Users.tsx](dashboard/src/pages/Users.tsx) — עמוד "משתמשים" עם הטבלה. Cursor לוחץ על כפתור **"+ הוסף משתמש"** (כחול, ימין למעלה)
+- **המודאל נפתח:** [dashboard/src/components/AddUserModal.tsx](dashboard/src/components/AddUserModal.tsx) — מקליד טלפון `054-1234567` + שם `אורן כהן`. לוחץ **"הוסף משתמש"**.
+- **טקסט:** **"מוסיף דייר — שתי שניות"**
+- **קריינות:** "מנהל הבניין מקליד טלפון —"
 
----
+#### 0:17–0:20 — WhatsApp + רישום (3 שניות)
+- **להראות:** Split screen מפוצל ל־3 פריימים מהירים:
+  1. **Frame 1 (1s):** טלפון אנדרואיד — התראת WhatsApp נכנסת. הודעה: "ברוך הבא ל-KeyPass — לחץ כאן"
+  2. **Frame 2 (1s):** [backend/src/routes/download.ts](backend/src/routes/download.ts) — דף `/open` במצב SUCCESS עם הספינר → ✓
+  3. **Frame 3 (1s):** [android/.../ui/screens/SetupScreen.kt](android/app/src/main/java/com/keypass/app/ui/screens/SetupScreen.kt) — מסך SUCCESS עם הצ׳ק־מארק הירוק הענק + "המפתח שלך מוכן!"
+- **טקסט:** **"30 שניות. בלי טכנאי."**
+- **קריינות:** "— הדייר מקבל וואטסאפ, מתקין, מוכן."
 
-## Scene 7: Opening a Door (20 seconds)
+#### 0:20–0:23 — פתיחת דלת (3 שניות)
+- **להראות:** [android/.../ui/screens/HomeScreen.kt](android/app/src/main/java/com/keypass/app/ui/screens/HomeScreen.kt) — Door card עם הכפתור **"🔓 סימולציית NFC"**. אצבע לוחצת. הכפתור הופך ירוק: **"✓ נפתח!"**. רטט.
+- **⚠️ הערה למפיק:** בגרסה הסופית — להחליף בצילום אמיתי של הצמדת טלפון לקורא NFC + דלת נפתחת. כרגע הסימולציה ממחישה את החוויה.
+- **טקסט:** **"הצמדה. נפתח."**
+- **קריינות:** "הצמדה — דלת נפתחת."
 
-**Show**: Phone held against NFC reader (or simulate button)
-
-1. Show the door card with "סימולציית NFC" button
-2. Tap the button
-3. Button turns green: "✓ נפתח!"
-4. Phone vibrates
-
-**With real hardware** (when available):
-1. Hold phone against reader next to door
-2. Brief buzz/vibration
-3. Door clicks open
-
-**Script**: "הצמדה לקורא — הדלת נפתחת. בדיוק כמו תשלום בארנק דיגיטלי."
-
----
-
-## Scene 8: Real-Time in Admin Dashboard (20 seconds)
-
-**Show**: Split screen — phone + admin dashboard
-
-1. Admin dashboard shows the access event appearing in real-time
-2. Log entry: "אורן כהן | כניסה ראשית | NFC | נפתח"
-3. Dashboard KPI updates
-
-**Script**: "המנהל רואה בזמן אמת מי נכנס, לאיפה, ומתי. שליטה מלאה."
+#### 0:23–0:25 — Google Wallet (2 שניות)
+- **להראות:** מסך הטלפון. כפתור שחור **"📱 הוסף ל-Google Wallet"** מ־[android/.../ui/screens/HomeScreen.kt](android/app/src/main/java/com/keypass/app/ui/screens/HomeScreen.kt). לחיצה. אנימציית Google Wallet הרשמית — כרטיס KeyPass נוחת בארנק.
+- **טקסט:** **"גם בארנק. גם באפליקציה."**
+- **קריינות:** "אפילו בלי לפתוח את האפליקציה."
 
 ---
 
-## Scene 9: Closing Summary (10 seconds)
+### 📊 PROOF — 0:25–0:35 (10 שניות)
 
-**Show**: Dashboard overview with all KPIs
+#### 0:25–0:30 — דשבורד בזמן אמת (5 שניות)
+- **להראות:** [dashboard/src/pages/Dashboard.tsx](dashboard/src/pages/Dashboard.tsx) — מסך מלא של הדשבורד הראשי:
+  - **5 כרטיסי KPI** למעלה: סה״כ משתמשים / משתמשים פעילים / דלתות מחוברות (`X/Y`) / כניסות היום / ממתינים לרישום
+  - **טבלת לוג בזמן אמת** למטה — שורות חדשות נכנסות עם אנימציית fade־in
+- **אפקט:** Speed-up ×3 על השורות החדשות. מספר "כניסות היום" מתקתק כלפי מעלה.
+- **טקסט (מופיע ונעלם):** **"בזמן אמת"** → **"כל כניסה. כל דלת. כל דייר."**
+- **קריינות:** "אתה רואה הכל. בזמן אמת. מי, איפה, מתי."
 
-**Script**: "KeyPass — בקרת כניסה חכמה. NFC. WhatsApp. ללא מפתחות פיזיים. לבניינים, משרדים, וחללי עבודה."
+#### 0:30–0:33 — ניהול הרשאות (3 שניות)
+- **להראות:** [dashboard/src/pages/UserDetail.tsx](dashboard/src/pages/UserDetail.tsx) — עמוד משתמש. Cursor לוחץ **"בטל גישה"** (אדום). הסטטוס משתנה ל־"בוטל".
+- **טקסט:** **"שוכר עזב? קליק אחד."**
+- **קריינות:** "דייר עזב? קליק אחד וגמרנו."
+
+#### 0:33–0:35 — דלתות (2 שניות)
+- **להראות:** [dashboard/src/pages/Doors.tsx](dashboard/src/pages/Doors.tsx) — Grid של כרטיסי דלתות. כולן עם פס ירוק "מחובר".
+- **טקסט:** **"שליטה מלאה."**
+- **קריינות:** "שליטה מלאה."
 
 ---
 
-## Recording Tips
+### 🎯 CTA — 0:35–0:45 (10 שניות)
 
-- **Screen recording**: Use Android built-in recorder for phone, OBS for computer
-- **Split screen**: Show phone + dashboard side by side for Scene 8
-- **Speed up**: Fast-forward the APK download/install part (show it in 5x speed)
-- **Background music**: Soft tech background music (royalty-free)
-- **Resolution**: Record dashboards at 1920x1080, phone at native resolution
-- **Hebrew RTL**: Make sure text is clearly readable (zoom in if needed)
+#### 0:35–0:40 — סיכום ויזואלי (5 שניות)
+- **להראות:** Montage מהיר ×4 שוטים (כל אחד 1.25 שניות):
+  1. דשבורד KPI cards
+  2. אצבע מקישה על דלת (סימולציה ירוקה)
+  3. Google Wallet card
+  4. WhatsApp הודעה נכנסת
+- **טקסט בענק על כל מסך:** **"בלי שבבים. בלי מפתחות. בלי כאב ראש."**
+- **קריינות:** "בלי שבבים. בלי מפתחות. בלי כאב ראש."
 
-## One-Liner for LinkedIn/Pitch
+#### 0:40–0:45 — Call to action (5 שניות)
+- **להראות:** מסך נקי, רקע כחול KeyPass. לוגו במרכז. מתחת:
+  - **QR code** ענק (לינק ל־WhatsApp business)
+  - מתחת ל־QR: **"סרוק. דבר איתנו. מתקינים השבוע."**
+  - בתחתית קטן: `keypass.co.il` | `wa.me/972XXXXXXXXX`
+- **קריינות:** "KeyPass. הבניין שלך מתחיל לעבוד אחרת — השבוע."
+- **מוזיקה:** מתפוגגת לאקורד סופי.
 
-> "הטלפון שלך הוא המפתח. KeyPass — בקרת כניסה מבוססת NFC. מנהל הבניין מוסיף דייר בדשבורד, הדייר מקבל WhatsApp, מוריד אפליקציה, ומאותו רגע — הצמדת הטלפון פותחת את הדלת."
+---
+
+## 🎵 הפקה — Production Notes
+
+### כלים
+- **Screen recording — דשבורד:** OBS Studio ב־1920×1080, 60fps. כרום במצב מלא, הגדלת UI ל־110% לקריאות.
+- **Screen recording — אנדרואיד:** Android Studio screen record (`adb shell screenrecord`) או scrcpy + OBS.
+- **עריכה:** DaVinci Resolve (חינם) או Premiere. פילטר LUT קליל לחומימות.
+- **קריינות:** קול גברי/נשי 25–35, הקלטה ב־USB mic איכותי. טון ביטחוני, לא צועק.
+
+### מוזיקה
+- **ז׳אנר:** Modern trap / electronic with deep bass drop ב־0:12
+- **מקורות חינמיים:** Pixabay Music, YouTube Audio Library, Artlist (בתשלום — שווה את זה)
+- **חיפוש:** "tech trap drop", "product launch beat"
+
+### עיצוב טקסט
+- **פונט:** Heebo Bold או Assistant Black (תומכי עברית RTL)
+- **גודל:** 80–120pt לכותרות hook, 50–70pt לטקסטים בסצנות
+- **צבעים:** לבן על שחור (HOOK + PAIN), לבן על כחול KeyPass (#0066FF) ב־SOLUTION+CTA
+- **אנימציות:** Quick punch-in (×0.2s), shake לכותרות PAIN, fade־in ל־PROOF
+
+### RTL וקריאות
+- כל טקסט עברי מיושר לימין
+- בדיקה על מסך טלפון אנכי — חצי מהצופים יראו ב־9:16 (Reels/TikTok/Stories)
+- גרסה מקבילה 9:16 חובה — לחתוך מהמרכז עם reframe
+
+### צבעים מהמותג
+- כחול KeyPass: `#3B82F6` (מ־Tailwind blue-500, השימושי בדשבורד)
+- ירוק הצלחה: `#22C55E`
+- אדום כאב/בטל: `#EF4444`
+
+---
+
+## 📲 One-Liner לרשתות
+
+> **"בעלי בנייני 2026 עוד מחלקים שבבים? הטלפון של הדייר הוא המפתח. KeyPass — מוסיפים דייר בקליק, וואטסאפ נשלח, אפליקציה מותקנת, ובהצמדה — הדלת נפתחת. בלי שבבים. בלי כאבי ראש. שליטה מלאה — בזמן אמת."**
+
+### גרסה קצרה (Twitter/X, 280 תווים)
+> הטלפון של הדייר = המפתח. מוסיפים דייר בדשבורד → וואטסאפ → אפליקציה → דלת. שליטה מלאה בזמן אמת. בלי שבבים, בלי כפילויות, בלי שוכר־לשעבר עם גישה. KeyPass. 🔑📱
+
+### גרסה ל-LinkedIn
+> בניתי את KeyPass כי נמאס לי לראות ועדי בית מבזבזים ₪50 על כל שבב כפול ושבוע המתנה לכל דייר חדש.
+>
+> מנהל הבניין מוסיף דייר בקליק. הדייר מקבל וואטסאפ, מתקין אפליקציה תוך 30 שניות, והטלפון שלו הופך למפתח NFC. כל פתיחת דלת נרשמת בזמן אמת בדשבורד.
+>
+> שוכר עזב? קליק אחד — בטלת גישה. בלי שבבים נעלמים. בלי קופסה של מפתחות. בלי הפתעות.
+>
+> מחפש 5 בניינים לפיילוט. מי בפנים?
+
+---
+
+## ✅ Pre-Production Checklist
+
+- [ ] דשבורד עם דאטה מציאותי (לפחות 50 משתמשים, 4–6 דלתות, לוג עשיר)
+- [ ] משתמש demo נקי בשם "אורן כהן" + דירה 12
+- [ ] טלפון demo עם האפליקציה מותקנת ומחובר ל־Wi-Fi יציב
+- [ ] WhatsApp Business מוכן עם הודעה מעוצבת
+- [ ] Google Wallet sandbox מאומת — הכרטיס נכנס בלי שגיאות
+- [ ] QR code סופי מצביע על מספר WhatsApp העסקי
+- [ ] גרסת 9:16 לסטוריז + 16:9 ליוטיוב/לינקדאין
+- [ ] כתוביות עברית מוטבעות (50% צופים בלי קול)
