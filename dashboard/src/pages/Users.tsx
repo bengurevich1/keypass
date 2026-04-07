@@ -34,19 +34,19 @@ export default function Users() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">משתמשים</h1>
-        <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">משתמשים</h1>
+        <div className="flex gap-2 sm:gap-3">
           <button
             onClick={handleExport}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 min-h-[44px] border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
           >
             <Download className="w-4 h-4" />
             ייצוא
           </button>
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 min-h-[44px] bg-primary-600 text-white rounded-lg hover:bg-primary-700 text-sm"
           >
             <Plus className="w-4 h-4" />
             הוסף משתמש
@@ -55,8 +55,8 @@ export default function Users() {
       </div>
 
       {/* Filters */}
-      <div className="flex gap-4 mb-6">
-        <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
+        <div className="relative flex-1 sm:max-w-md">
           <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="text"
@@ -81,7 +81,8 @@ export default function Users() {
 
       {/* Table */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[720px]">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50">
               <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">שם</th>
@@ -126,6 +127,7 @@ export default function Users() {
             )}
           </tbody>
         </table>
+        </div>
 
         {/* Pagination */}
         {data && data.total > 20 && (

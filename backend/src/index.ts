@@ -13,6 +13,7 @@ import adminRoutes from './routes/admin';
 import mobileRoutes from './routes/mobile';
 import registerRoutes from './routes/register';
 import downloadRoutes from './routes/download';
+import walletRoutes from './routes/wallet';
 
 const app = express();
 const httpServer = createServer(app);
@@ -27,6 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/super', superAdminRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/mobile', mobileRoutes);
+app.use('/api/wallet', walletRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

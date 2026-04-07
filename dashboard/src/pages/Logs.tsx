@@ -44,11 +44,11 @@ export default function Logs() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">לוג כניסות</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">לוג כניסות</h1>
         <button
           onClick={() => window.open('/api/admin/logs/export', '_blank')}
-          className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+          className="flex items-center gap-2 px-4 py-2 min-h-[44px] border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 self-start"
         >
           <Download className="w-4 h-4" />
           ייצוא CSV
@@ -56,7 +56,7 @@ export default function Logs() {
       </div>
 
       {/* Filters */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
         <select
           value={doorFilter}
           onChange={(e) => { setDoorFilter(e.target.value); setPage(1); }}
@@ -82,7 +82,8 @@ export default function Logs() {
 
       {/* Table */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[640px]">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50">
               <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">זמן</th>
@@ -115,6 +116,7 @@ export default function Logs() {
             )}
           </tbody>
         </table>
+        </div>
 
         {data && data.total > 30 && (
           <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100">

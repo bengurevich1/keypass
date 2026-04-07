@@ -29,10 +29,10 @@ export default function Settings() {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">הגדרות</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">הגדרות</h1>
 
       {/* Organization Info */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">פרטי ארגון</h2>
         <div className="space-y-3">
           <div>
@@ -52,7 +52,7 @@ export default function Settings() {
       </div>
 
       {/* Profile */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">הפרופיל שלי</h2>
         <div className="space-y-3">
           <div>
@@ -67,7 +67,7 @@ export default function Settings() {
       </div>
 
       {/* Change Password */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">שינוי סיסמה</h2>
         {message && (
           <div className={`mb-4 p-3 rounded-lg text-sm ${
@@ -110,7 +110,7 @@ export default function Settings() {
           <button
             type="submit"
             disabled={passwordMutation.isPending}
-            className="px-6 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
+            className="w-full sm:w-auto px-6 py-3 min-h-[44px] bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
           >
             {passwordMutation.isPending ? 'מעדכן...' : 'עדכן סיסמה'}
           </button>

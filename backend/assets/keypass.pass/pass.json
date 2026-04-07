@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.co.keypass.membership",
+  "teamIdentifier": "TEAMID",
+  "organizationName": "KeyPass",
+  "description": "KeyPass membership card",
+  "logoText": "KeyPass",
+  "foregroundColor": "rgb(255, 255, 255)",
+  "backgroundColor": "rgb(5, 150, 105)",
+  "labelColor": "rgb(220, 252, 231)",
+  "storeCard": {
+    "headerFields": [],
+    "primaryFields": [],
+    "secondaryFields": [],
+    "auxiliaryFields": [],
+    "backFields": []
+  }
+}

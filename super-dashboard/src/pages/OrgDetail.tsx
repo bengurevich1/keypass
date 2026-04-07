@@ -44,23 +44,23 @@ export default function OrgDetail() {
         <ArrowRight className="w-4 h-4" /> חזרה לארגונים
       </button>
 
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <div className="flex items-center justify-between">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{org.name}</h1>
-            <p className="text-gray-500 mt-1">{org.address}</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">{org.name}</h1>
+            <p className="text-sm sm:text-base text-gray-500 mt-1">{org.address}</p>
           </div>
-          <span className={`px-3 py-1 rounded-full text-sm font-medium ${org.isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          <span className={`self-start px-3 py-1 rounded-full text-sm font-medium ${org.isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
             {org.isActive ? 'פעיל' : 'מושבת'}
           </span>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1">
+      <div className="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1 overflow-x-auto">
         {tabs.map((t) => (
           <button key={t.key} onClick={() => setTab(t.key)}
-            className={`flex-1 py-2.5 text-sm font-medium rounded-md transition-colors ${
+            className={`flex-1 min-w-[80px] py-2.5 min-h-[44px] text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
               tab === t.key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
             }`}>
             {t.label}
@@ -70,8 +70,8 @@ export default function OrgDetail() {
 
       {/* Overview Tab */}
       {tab === 'overview' && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
             <h3 className="text-sm font-medium text-gray-500 mb-2">פרטים</h3>
             <div className="space-y-2 text-sm">
               <div><span className="text-gray-500">תוכנית:</span> <span className="font-medium">{org.plan}</span></div>
@@ -80,7 +80,7 @@ export default function OrgDetail() {
               <div><span className="text-gray-500">טלפון:</span> <span className="font-medium" dir="ltr">{org.contactPhone || '—'}</span></div>
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
             <h3 className="text-sm font-medium text-gray-500 mb-2">סטטיסטיקות</h3>
             <div className="space-y-2 text-sm">
               <div><span className="text-gray-500">משתמשים:</span> <span className="font-bold text-lg">{org.userCount}</span></div>
@@ -88,7 +88,7 @@ export default function OrgDetail() {
               <div><span className="text-gray-500">מנהלים:</span> <span className="font-bold text-lg">{org.admins?.length || 0}</span></div>
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
             <h3 className="text-sm font-medium text-gray-500 mb-2">הערות פנימיות</h3>
             <p className="text-sm text-gray-600">{org.notes || 'אין הערות'}</p>
           </div>
@@ -97,15 +97,16 @@ export default function OrgDetail() {
 
       {/* Admins Tab */}
       {tab === 'admins' && (
-        <div className="bg-white rounded-xl border border-gray-200">
-          <div className="flex items-center justify-between p-6 border-b border-gray-100">
-            <h2 className="text-lg font-semibold">מנהלים</h2>
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-6 border-b border-gray-100">
+            <h2 className="text-base sm:text-lg font-semibold">מנהלים</h2>
             <button onClick={() => setShowAddAdmin(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
+              className="flex items-center gap-2 px-4 py-2 min-h-[44px] bg-amber-500 text-white rounded-lg hover:bg-amber-600 text-sm self-start">
               <Plus className="w-4 h-4" /> הוסף מנהל
             </button>
           </div>
-          <table className="w-full">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px]">
             <thead>
               <tr className="border-b border-gray-100">
                 <th className="text-right px-6 py-3 text-xs font-medium text-gray-500">שם</th>
@@ -133,16 +134,18 @@ export default function OrgDetail() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
       {/* Doors Tab */}
       {tab === 'doors' && (
-        <div className="bg-white rounded-xl border border-gray-200">
-          <div className="p-6 border-b border-gray-100">
-            <h2 className="text-lg font-semibold">דלתות</h2>
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="p-4 sm:p-6 border-b border-gray-100">
+            <h2 className="text-base sm:text-lg font-semibold">דלתות</h2>
           </div>
-          <table className="w-full">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
             <thead>
               <tr className="border-b border-gray-100">
                 <th className="text-right px-6 py-3 text-xs font-medium text-gray-500">שם</th>
@@ -167,6 +170,7 @@ export default function OrgDetail() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
@@ -186,13 +190,13 @@ export default function OrgDetail() {
 
       {/* Add Admin Modal */}
       {showAddAdmin && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowAddAdmin(false)}>
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="fixed inset-0 z-50 flex items-stretch sm:items-center justify-center bg-black/50 sm:p-4" onClick={() => setShowAddAdmin(false)}>
+          <div className="bg-white sm:rounded-2xl shadow-xl w-full sm:max-w-md sm:max-h-[90vh] flex flex-col overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-100">
               <h2 className="text-lg font-semibold">הוספת מנהל</h2>
-              <button onClick={() => setShowAddAdmin(false)}><X className="w-5 h-5 text-gray-400" /></button>
+              <button onClick={() => setShowAddAdmin(false)} className="p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center"><X className="w-5 h-5 text-gray-400" /></button>
             </div>
-            <form onSubmit={(e) => { e.preventDefault(); createAdminMutation.mutate(adminForm); }} className="p-6 space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); createAdminMutation.mutate(adminForm); }} className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">שם *</label>
                 <input type="text" value={adminForm.name} onChange={(e) => setAdminForm({ ...adminForm, name: e.target.value })}
@@ -215,9 +219,9 @@ export default function OrgDetail() {
               </div>
               <div className="flex gap-3 pt-4">
                 <button type="button" onClick={() => setShowAddAdmin(false)}
-                  className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">ביטול</button>
+                  className="flex-1 px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">ביטול</button>
                 <button type="submit" disabled={createAdminMutation.isPending}
-                  className="flex-1 px-4 py-2.5 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50">
+                  className="flex-1 px-4 py-3 min-h-[44px] bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50">
                   {createAdminMutation.isPending ? 'יוצר...' : 'הוסף מנהל'}
                 </button>
               </div>

@@ -178,6 +178,17 @@ export const adminActivityLogs = pgTable('admin_activity_logs', {
   index('idx_admin_activity_org_ts').on(table.orgId, table.timestamp),
 ]);
 
+export const walletPasses = pgTable('wallet_passes', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  platform: varchar('platform', { length: 10 }).notNull(), // 'google' | 'apple'
+  externalId: varchar('external_id', { length: 255 }),
+  issuedAt: timestamp('issued_at', { withTimezone: true }).defaultNow(),
+  revokedAt: timestamp('revoked_at', { withTimezone: true }),
+}, (table) => [
+  uniqueIndex('idx_wallet_passes_user_platform').on(table.userId, table.platform),
+]);
+
 export const whatsappLog = pgTable('whatsapp_log', {
   id: bigserial('id', { mode: 'number' }).primaryKey(),
   phone: varchar('phone', { length: 20 }).notNull(),

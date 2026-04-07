@@ -20,6 +20,19 @@ services:
       - DEV_MODE=${DEV_MODE:-true}
       - CORS_ORIGINS=http://localhost:5173,http://localhost:5174
       - NODE_ENV=development
+      - GOOGLE_WALLET_ISSUER_ID=${GOOGLE_WALLET_ISSUER_ID:-}
+      - GOOGLE_WALLET_SA_KEY_PATH=${GOOGLE_WALLET_SA_KEY_PATH:-./secrets/google-wallet-sa.json}
+      - GOOGLE_WALLET_SA_KEY_JSON=${GOOGLE_WALLET_SA_KEY_JSON:-}
+      - GOOGLE_WALLET_CLASS_SUFFIX=${GOOGLE_WALLET_CLASS_SUFFIX:-keypass_membership_v1}
+      - APPLE_PASS_TYPE_ID=${APPLE_PASS_TYPE_ID:-}
+      - APPLE_TEAM_ID=${APPLE_TEAM_ID:-}
+      - APPLE_PASS_CERT_PATH=${APPLE_PASS_CERT_PATH:-}
+      - APPLE_PASS_KEY_PATH=${APPLE_PASS_KEY_PATH:-}
+      - APPLE_PASS_KEY_PASSPHRASE=${APPLE_PASS_KEY_PASSPHRASE:-}
+      - APPLE_WWDR_CERT_PATH=${APPLE_WWDR_CERT_PATH:-}
+      - APPLE_PASS_MODEL_DIR=${APPLE_PASS_MODEL_DIR:-./assets/keypass.pass}
+    volumes:
+      - ./backend/secrets:/app/secrets:ro
     depends_on:
       db:
         condition: service_healthy

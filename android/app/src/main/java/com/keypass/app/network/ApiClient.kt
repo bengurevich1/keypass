@@ -90,6 +90,10 @@ data class HistoryResponse(
     val limit: Int
 )
 
+data class WalletSignRequest(val platform: String)
+data class WalletSignResponse(val url: String)
+data class WalletStatusResponse(val google: Boolean, val apple: Boolean)
+
 interface KeyPassApi {
     @POST("auth/send-otp")
     suspend fun sendOtp(@Body body: SendOtpRequest): SendOtpResponse
@@ -120,6 +124,12 @@ interface KeyPassApi {
 
     @DELETE("mobile/me")
     suspend fun deleteAccount(): Map<String, String>
+
+    @POST("wallet/sign")
+    suspend fun signWalletLink(@Body body: WalletSignRequest): WalletSignResponse
+
+    @GET("wallet/status")
+    suspend fun walletStatus(): WalletStatusResponse
 }
 
 object ApiClient {

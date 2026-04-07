@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import {
@@ -9,6 +9,8 @@ import {
   Settings,
   LogOut,
   KeyRound,
+  Menu,
+  X,
 } from 'lucide-react';
 
 const navItems = [
@@ -22,12 +24,50 @@ const navItems = [
 export default function Layout({ children }: { children: ReactNode }) {
   const { user, logout } = useAuth();
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Auto-close sidebar after navigation on mobile
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className="flex h-screen bg-gray-50">
+      {/* Mobile top bar */}
+      <header className="lg:hidden fixed top-0 inset-x-0 z-30 h-14 bg-white border-b border-gray-200 flex items-center justify-between px-4">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+            <KeyRound className="w-5 h-5 text-white" />
+          </div>
+          <span className="text-base font-bold text-gray-900">KeyPass</span>
+        </div>
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="p-2 -mr-2 text-gray-700 hover:bg-gray-100 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+          aria-label="פתח תפריט"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+      </header>
+
+      {/* Backdrop for mobile drawer */}
+      {sidebarOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-40 bg-black/50"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-l border-gray-200 flex flex-col">
-        <div className="p-6 border-b border-gray-100">
+      <aside
+        className={`
+          fixed lg:static inset-y-0 right-0 z-50
+          w-72 lg:w-64 bg-white border-l border-gray-200 flex flex-col
+          transform transition-transform duration-200 ease-in-out
+          ${sidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
+        `}
+      >
+        <div className="p-6 border-b border-gray-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
               <KeyRound className="w-6 h-6 text-white" />
@@ -37,9 +77,16 @@ export default function Layout({ children }: { children: ReactNode }) {
               <p className="text-xs text-gray-500">{user?.orgName}</p>
             </div>
           </div>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="lg:hidden p-2 -ml-2 text-gray-500 hover:bg-gray-100 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="סגור תפריט"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        <nav className="flex-1 p-4 space-y-1">
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path ||
               (item.path !== '/' && location.pathname.startsWith(item.path));
@@ -84,7 +131,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto p-8">
+      <main className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
         {children}
       </main>
     </div>

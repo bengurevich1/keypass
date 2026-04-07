@@ -52,6 +52,10 @@ object PrefsManager {
         get() = prefs.getString("server_url", null)
         set(value) = prefs.edit().putString("server_url", value).apply()
 
+    var walletPassAdded: Boolean
+        get() = prefs.getBoolean("wallet_pass_added", false)
+        set(value) = prefs.edit().putBoolean("wallet_pass_added", value).apply()
+
     val isRegistered: Boolean
         get() = !credentialId.isNullOrEmpty()
 

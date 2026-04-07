@@ -74,24 +74,24 @@ export default function UserDetail() {
       </button>
 
       {/* Header */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-        <div className="flex items-center justify-between">
+      <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{user.name || 'ללא שם'}</h1>
-            <div className="flex items-center gap-4 mt-2 text-gray-500 text-sm">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">{user.name || 'ללא שם'}</h1>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-gray-500 text-sm">
               <span dir="ltr">{user.phone}</span>
               {user.apartment && <span>דירה {user.apartment}</span>}
               {user.registeredAt && <span>נרשם {format(new Date(user.registeredAt), 'dd/MM/yyyy')}</span>}
             </div>
           </div>
-          <span className={`px-3 py-1 rounded-full text-sm font-medium ${status.color}`}>{status.label}</span>
+          <span className={`self-start px-3 py-1 rounded-full text-sm font-medium ${status.color}`}>{status.label}</span>
         </div>
 
         {/* Actions */}
-        <div className="flex flex-wrap gap-3 mt-6">
+        <div className="flex flex-wrap gap-2 sm:gap-3 mt-6">
           <button
             onClick={() => actionMutation.mutate({ action: 'resend-whatsapp', userId: user.id })}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+            className="flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
           >
             <Send className="w-4 h-4" />
             שלח WhatsApp מחדש
@@ -99,7 +99,7 @@ export default function UserDetail() {
           {user.status === 'active' && (
             <button
               onClick={() => actionMutation.mutate({ action: 'suspend', userId: user.id })}
-              className="flex items-center gap-2 px-4 py-2 border border-orange-300 rounded-lg text-orange-700 hover:bg-orange-50"
+              className="flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm border border-orange-300 rounded-lg text-orange-700 hover:bg-orange-50"
             >
               <Pause className="w-4 h-4" />
               השהה
@@ -108,7 +108,7 @@ export default function UserDetail() {
           {user.status === 'suspended' && (
             <button
               onClick={() => actionMutation.mutate({ action: 'activate', userId: user.id })}
-              className="flex items-center gap-2 px-4 py-2 border border-green-300 rounded-lg text-green-700 hover:bg-green-50"
+              className="flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm border border-green-300 rounded-lg text-green-700 hover:bg-green-50"
             >
               <Play className="w-4 h-4" />
               הפעל מחדש
@@ -121,7 +121,7 @@ export default function UserDetail() {
                   actionMutation.mutate({ action: 'revoke', userId: user.id });
                 }
               }}
-              className="flex items-center gap-2 px-4 py-2 border border-orange-300 rounded-lg text-orange-700 hover:bg-orange-50"
+              className="flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm border border-orange-300 rounded-lg text-orange-700 hover:bg-orange-50"
             >
               <Ban className="w-4 h-4" />
               בטל גישה
@@ -133,7 +133,7 @@ export default function UserDetail() {
                 actionMutation.mutate({ action: 'delete-permanent', userId: user.id });
               }
             }}
-            className="flex items-center gap-2 px-4 py-2 border border-red-300 rounded-lg text-red-700 hover:bg-red-50"
+            className="flex items-center gap-2 px-4 py-2 min-h-[44px] text-sm border border-red-300 rounded-lg text-red-700 hover:bg-red-50"
           >
             <Trash2 className="w-4 h-4" />
             מחק משתמש
@@ -141,9 +141,9 @@ export default function UserDetail() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Door Permissions */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">הרשאות דלתות</h2>
           <div className="space-y-3">
             {allDoors?.map((door: any) => {
@@ -173,7 +173,7 @@ export default function UserDetail() {
         </div>
 
         {/* Devices */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">מכשירים</h2>
           {user.credentials?.length > 0 ? (
             <div className="space-y-3">
@@ -198,10 +198,11 @@ export default function UserDetail() {
 
       {/* Access History */}
       <div className="bg-white rounded-xl border border-gray-200 mt-6">
-        <div className="p-6 border-b border-gray-100">
-          <h2 className="text-lg font-semibold text-gray-900">היסטוריית כניסות</h2>
+        <div className="p-4 sm:p-6 border-b border-gray-100">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900">היסטוריית כניסות</h2>
         </div>
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[560px]">
           <thead>
             <tr className="border-b border-gray-100">
               <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">תאריך</th>
@@ -230,6 +231,7 @@ export default function UserDetail() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

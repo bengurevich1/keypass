@@ -37,15 +37,15 @@ export default function Organizations() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">ארגונים</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">ארגונים</h1>
         <button onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
+          className="flex items-center gap-2 px-4 py-2 min-h-[44px] bg-amber-500 text-white rounded-lg hover:bg-amber-600 text-sm self-start">
           <Plus className="w-4 h-4" /> ארגון חדש
         </button>
       </div>
 
-      <div className="relative max-w-md mb-6">
+      <div className="relative sm:max-w-md mb-6">
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}
           placeholder="חיפוש ארגון..."
@@ -53,7 +53,8 @@ export default function Organizations() {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[800px]">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50">
               <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">שם</th>
@@ -89,17 +90,18 @@ export default function Organizations() {
             })}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Create Modal */}
       {showCreate && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowCreate(false)}>
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg mx-4" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="fixed inset-0 z-50 flex items-stretch sm:items-center justify-center bg-black/50 sm:p-4" onClick={() => setShowCreate(false)}>
+          <div className="bg-white sm:rounded-2xl shadow-xl w-full sm:max-w-lg sm:max-h-[90vh] flex flex-col overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-100">
               <h2 className="text-lg font-semibold">ארגון חדש</h2>
-              <button onClick={() => setShowCreate(false)}><X className="w-5 h-5 text-gray-400" /></button>
+              <button onClick={() => setShowCreate(false)} className="p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center"><X className="w-5 h-5 text-gray-400" /></button>
             </div>
-            <form onSubmit={(e) => { e.preventDefault(); createMutation.mutate(form); }} className="p-6 space-y-4">
+            <form onSubmit={(e) => { e.preventDefault(); createMutation.mutate(form); }} className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">שם הארגון *</label>
                 <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -110,7 +112,7 @@ export default function Organizations() {
                 <input type="text" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })}
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">איש קשר</label>
                   <input type="text" value={form.contactName} onChange={(e) => setForm({ ...form, contactName: e.target.value })}
@@ -122,7 +124,7 @@ export default function Organizations() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-amber-500" dir="ltr" />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">תוכנית</label>
                   <select value={form.plan} onChange={(e) => setForm({ ...form, plan: e.target.value })}
@@ -140,9 +142,9 @@ export default function Organizations() {
               </div>
               <div className="flex gap-3 pt-4">
                 <button type="button" onClick={() => setShowCreate(false)}
-                  className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">ביטול</button>
+                  className="flex-1 px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">ביטול</button>
                 <button type="submit" disabled={createMutation.isPending}
-                  className="flex-1 px-4 py-2.5 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50">
+                  className="flex-1 px-4 py-3 min-h-[44px] bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:opacity-50">
                   {createMutation.isPending ? 'יוצר...' : 'צור ארגון'}
                 </button>
               </div>

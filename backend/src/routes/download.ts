@@ -69,6 +69,10 @@ router.get('/open', async (req: Request, res: Response) => {
     @keyframes spin{to{transform:rotate(360deg)}}
     .hide{display:none}
     .step2{margin-top:24px;padding-top:24px;border-top:1px solid #e2e8f0}
+    .wallet{margin-top:20px;padding-top:20px;border-top:1px solid #e2e8f0}
+    .wallet .sub{margin-bottom:12px;font-size:13px}
+    .btn-wallet{background:#000;color:#fff}
+    .btn-wallet:hover{background:#1f2937}
   </style>
 </head>
 <body>
@@ -94,6 +98,11 @@ router.get('/open', async (req: Request, res: Response) => {
       <div class="step2">
         <p class="sub" style="margin-bottom:16px">אחרי ההתקנה, לחץ כאן:</p>
         <a href="${deepLink}" class="btn btn-outline" id="btn-open">📱 פתח את KeyPass</a>
+      </div>
+
+      <div id="wallet-section" class="wallet hide">
+        <p class="sub">או הוסף את הכרטיס לארנק:</p>
+        <a id="btn-wallet" class="btn btn-wallet" href="#" target="_blank" rel="noopener"></a>
       </div>
     </div>
     `}
@@ -132,6 +141,29 @@ router.get('/open', async (req: Request, res: Response) => {
           // App opened — do nothing, user is in the app
         }
       });
+    })();
+
+    // Wallet button: detect platform, fetch a signed wallet link, show appropriate CTA.
+    (function(){
+      var token = ${JSON.stringify(token)};
+      if (!token) return;
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+      var platform = isIOS ? 'apple' : (isAndroid ? 'google' : null);
+      if (!platform) return;
+      fetch('/api/wallet/sign-from-registration?token=' + encodeURIComponent(token) + '&platform=' + platform)
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(data) {
+          if (!data || !data.url) return;
+          var section = document.getElementById('wallet-section');
+          var btn = document.getElementById('btn-wallet');
+          if (!section || !btn) return;
+          btn.href = data.url;
+          btn.textContent = isIOS ? '🍎 הוסף ל-Apple Wallet' : '📱 הוסף ל-Google Wallet';
+          section.classList.remove('hide');
+        })
+        .catch(function() { /* silent */ });
     })();
   </script>
 </body>

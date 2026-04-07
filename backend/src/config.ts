@@ -39,6 +39,24 @@ export const config = {
 
   apkPath: process.env.APK_PATH || './public/KeyPass.apk',
 
+  wallet: {
+    google: {
+      issuerId: process.env.GOOGLE_WALLET_ISSUER_ID || '',
+      saKeyPath: process.env.GOOGLE_WALLET_SA_KEY_PATH || '',
+      saKeyJson: process.env.GOOGLE_WALLET_SA_KEY_JSON || '',
+      classSuffix: process.env.GOOGLE_WALLET_CLASS_SUFFIX || 'keypass_membership_v1',
+    },
+    apple: {
+      passTypeId: process.env.APPLE_PASS_TYPE_ID || '',
+      teamId: process.env.APPLE_TEAM_ID || '',
+      certPath: process.env.APPLE_PASS_CERT_PATH || '',
+      keyPath: process.env.APPLE_PASS_KEY_PATH || '',
+      keyPassphrase: process.env.APPLE_PASS_KEY_PASSPHRASE || '',
+      wwdrPath: process.env.APPLE_WWDR_CERT_PATH || '',
+      modelDir: process.env.APPLE_PASS_MODEL_DIR || './assets/keypass.pass',
+    },
+  },
+
   cors: {
     origins: '*' as any,
   },

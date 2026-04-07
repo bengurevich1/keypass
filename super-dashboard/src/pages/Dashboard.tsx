@@ -21,26 +21,26 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">דשבורד ראשי</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">דשבורד ראשי</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
         {kpis.map((kpi) => (
-          <div key={kpi.label} className="bg-white rounded-xl border border-gray-200 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-sm font-medium text-gray-500">{kpi.label}</span>
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${kpi.color}`}>
+          <div key={kpi.label} className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <span className="text-xs sm:text-sm font-medium text-gray-500">{kpi.label}</span>
+              <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center ${kpi.color}`}>
                 {kpi.icon}
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">{kpi.value}</p>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">{kpi.value}</p>
           </div>
         ))}
       </div>
 
       {/* Plans distribution */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">ארגונים לפי תוכנית</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-8">
+        <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">ארגונים לפי תוכנית</h2>
           <div className="space-y-3">
             {stats?.orgsByPlan?.map((item: any) => (
               <div key={item.plan} className="flex items-center justify-between">
@@ -51,8 +51,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">פעילות אחרונה</h2>
+        <div className="bg-white rounded-xl border border-gray-200 p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">פעילות אחרונה</h2>
           <div className="space-y-3 max-h-64 overflow-y-auto">
             {stats?.recentActivity?.map((activity: any) => (
               <div key={activity.id} className="flex items-center gap-3 text-sm">

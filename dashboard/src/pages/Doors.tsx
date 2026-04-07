@@ -29,10 +29,10 @@ export default function Doors() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">דלתות</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">דלתות</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {doors?.map((door: any) => (
           <div key={door.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             {/* Status bar */}
@@ -75,7 +75,7 @@ export default function Doors() {
                     }
                   }}
                   disabled={!door.isOnline || unlockMutation.isPending}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 min-h-[44px] bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Unlock className="w-4 h-4" />
                   פתח דלת

@@ -16,8 +16,8 @@ export default function Devices() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">מכשירים (ESP32)</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">מכשירים (ESP32)</h1>
         <div className="flex gap-4 text-sm">
           <span className="text-green-600">{online.length} מחוברים</span>
           <span className="text-red-500">{offline.length} מנותקים</span>
@@ -25,7 +25,8 @@ export default function Devices() {
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[760px]">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50">
               <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase">מזהה מכשיר</th>
@@ -61,6 +62,7 @@ export default function Devices() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

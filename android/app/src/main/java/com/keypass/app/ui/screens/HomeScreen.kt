@@ -2,6 +2,7 @@ package com.keypass.app.ui.screens
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.nfc.NfcAdapter
 import android.os.Build
 import android.os.VibrationEffect
@@ -32,6 +33,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.keypass.app.data.PrefsManager
 import com.keypass.app.network.ApiClient
 import com.keypass.app.network.DoorWithAccess
+import com.keypass.app.network.WalletSignRequest
 import com.keypass.app.ui.theme.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -45,6 +47,17 @@ fun HomeScreen() {
     var refreshing by remember { mutableStateOf(false) }
     val nfcAdapter = remember { NfcAdapter.getDefaultAdapter(context) }
     val nfcEnabled = remember { nfcAdapter?.isEnabled == true }
+    var walletAvailable by remember { mutableStateOf(false) }
+    var walletAdded by remember { mutableStateOf(PrefsManager.walletPassAdded) }
+    var walletLoading by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        if (!walletAdded) {
+            try {
+                walletAvailable = ApiClient.api.walletStatus().google
+            } catch (_: Exception) { /* leave hidden */ }
+        }
+    }
 
     fun loadDoors() {
         scope.launch {
@@ -74,6 +87,49 @@ fun HomeScreen() {
                     style = MaterialTheme.typography.bodyMedium,
                     color = KeyPassGray
                 )
+            }
+        }
+
+        // Add to Google Wallet button (shown until first successful add)
+        if (walletAvailable && !walletAdded) {
+            Surface(
+                color = Color(0xFF111827),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                TextButton(
+                    onClick = {
+                        if (walletLoading) return@TextButton
+                        scope.launch {
+                            walletLoading = true
+                            try {
+                                val resp = ApiClient.api.signWalletLink(WalletSignRequest("google"))
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(resp.url))
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                context.startActivity(intent)
+                                PrefsManager.walletPassAdded = true
+                                walletAdded = true
+                            } catch (_: Exception) {
+                                // silent — keep button visible for retry
+                            } finally {
+                                walletLoading = false
+                            }
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().height(48.dp)
+                ) {
+                    if (walletLoading) {
+                        CircularProgressIndicator(
+                            color = Color.White,
+                            modifier = Modifier.size(18.dp),
+                            strokeWidth = 2.dp
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
+                    Text("📱 הוסף ל-Google Wallet", color = Color.White, fontSize = 15.sp)
+                }
             }
         }
 

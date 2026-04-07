@@ -5,3 +5,4 @@ dist/
 *.apk
 .claude/
 .DS_Store
+backend/secrets/
